@@ -1,0 +1,220 @@
+/* ========== RESET ========== */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: "Poppins", sans-serif;
+  background: radial-gradient(circle at top left, #0a0b0f, #12141c 70%);
+  color: #f1f1f1;
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  overflow-x: hidden;
+}
+
+/* ========== CONTAINER PRINCIPAL ========== */
+.quiz-container {
+  width: 90%;
+  max-width: 800px;
+  min-height: 70vh;
+  background: rgba(30, 33, 43, 0.65);
+  border-radius: 20px;
+  backdrop-filter: blur(16px) saturate(180%);
+  -webkit-backdrop-filter: blur(16px) saturate(180%);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.5);
+  padding: 40px 30px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  gap: 1.5rem;
+  animation: fadeIn 0.6s ease;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* ========== CABEÇALHO ========== */
+.quiz-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+.difficulty {
+  font-weight: 600;
+  font-size: 1rem;
+  color: #9ae6b4;
+  text-shadow: 0 0 5px rgba(100, 255, 200, 0.3);
+}
+
+.difficulty.easy::before { content: "🟢 "; }
+.difficulty.medium::before { content: "🟠 "; }
+.difficulty.hard::before { content: "🔴 "; }
+
+/* ========== BOTÕES DE NAVEGAÇÃO ========== */
+.nav-buttons {
+  display: flex;
+  gap: 12px;
+}
+
+.nav-buttons button {
+  background: linear-gradient(145deg, #1e2029, #2a2d36);
+  color: #fff;
+  border: none;
+  border-radius: 10px;
+  padding: 12px 18px;
+  font-size: 1.1rem;
+  cursor: pointer;
+  transition: all 0.25s ease;
+}
+
+.nav-buttons button:hover {
+  background: linear-gradient(145deg, #2f323d, #3a3f4d);
+  transform: scale(1.07);
+  box-shadow: 0 0 10px rgba(100, 255, 200, 0.3);
+}
+
+/* ========== QUESTÕES E OPÇÕES ========== */
+.question {
+  font-size: 1.15rem;
+  font-weight: 500;
+  line-height: 1.6;
+  color: #f3f3f3;
+  margin-bottom: 1rem;
+  text-shadow: 0 0 4px rgba(255, 255, 255, 0.1);
+}
+
+.options {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+
+.option {
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 12px;
+  padding: 14px 18px;
+  cursor: pointer;
+  font-size: 1rem;
+  transition: all 0.25s ease;
+}
+
+.option:hover {
+  background: rgba(255, 255, 255, 0.12);
+  transform: translateY(-2px);
+}
+
+.option.correct {
+  background: rgba(46, 204, 113, 0.25);
+  border-color: rgba(46, 204, 113, 0.6);
+  color: #baf7c6;
+}
+
+.option.incorrect {
+  background: rgba(231, 76, 60, 0.25);
+  border-color: rgba(231, 76, 60, 0.6);
+  color: #ffcfcf;
+}
+
+/* ========== FEEDBACK ========== */
+.feedback {
+  background: rgba(255, 255, 255, 0.05);
+  border-radius: 10px;
+  padding: 16px;
+  font-size: 0.95rem;
+  color: #d3d3d3;
+  border-left: 4px solid #63ff9e;
+  display: none;
+}
+
+/* ========== FOOTER OU RESULTADOS ========== */
+.results {
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.results h2 {
+  font-size: 1.6rem;
+  color: #63ff9e;
+  text-shadow: 0 0 8px rgba(99, 255, 158, 0.3);
+}
+
+.results button {
+  background: linear-gradient(145deg, #1e2029, #2a2d36);
+  color: white;
+  border: none;
+  border-radius: 10px;
+  padding: 12px 20px;
+  margin-top: 10px;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: all 0.25s ease;
+}
+
+.results button:hover {
+  background: linear-gradient(145deg, #2f323d, #3a3f4d);
+  transform: scale(1.07);
+}
+
+/* ========== RESPONSIVIDADE ========== */
+@media (max-width: 768px) {
+  .quiz-container {
+    padding: 25px 20px;
+  }
+
+  .question {
+    font-size: 1rem;
+  }
+
+  .option {
+    font-size: 0.95rem;
+  }
+
+  .nav-buttons {
+    width: 100%;
+    justify-content: center;
+  }
+
+  .nav-buttons button {
+    flex: 1;
+  }
+}
+
+@media (max-width: 480px) {
+  body {
+    padding: 0 10px;
+  }
+
+  .quiz-container {
+    padding: 20px;
+    border-radius: 14px;
+  }
+
+  .question {
+    font-size: 0.95rem;
+  }
+
+  .option {
+    padding: 10px 12px;
+    font-size: 0.9rem;
+  }
+}
